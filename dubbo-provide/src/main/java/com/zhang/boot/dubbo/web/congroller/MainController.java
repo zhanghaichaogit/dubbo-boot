@@ -1,4 +1,4 @@
-package com.zhang.boot.weixin.web.congroller;
+package com.zhang.boot.dubbo.web.congroller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

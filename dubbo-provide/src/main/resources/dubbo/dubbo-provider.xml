@@ -6,6 +6,7 @@
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="${dubbo.application.name}" />
 
@@ -18,6 +19,7 @@
     <!-- 暴露服务 -->
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
 
-    <dubbo:service interface="com.zhang.boot.dubbo.api.service.dubbotest"
-                   ref="exampleServiceImpl" retries="0" timeout="6000" />
+    <dubbo:service ref="dubboserviceImpl"
+                   interface="com.zhang.boot.dubbo.api.service.ServiceTest"
+                   retries="0" timeout="6000" />
 </beans>
