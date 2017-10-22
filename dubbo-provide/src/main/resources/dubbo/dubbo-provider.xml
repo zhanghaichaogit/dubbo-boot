@@ -19,7 +19,7 @@
     <!-- 暴露服务 -->
     <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
 
-    <dubbo:service ref="dubboserviceImpl"
+    <dubbo:service ref="serviceTest"
                    interface="com.zhang.boot.dubbo.api.service.ServiceTest"
                    retries="0" timeout="6000" />
 </beans>
