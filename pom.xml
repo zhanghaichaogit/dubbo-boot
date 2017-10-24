@@ -1,32 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns = "http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.3.RELEASE</version>
-  </parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.baseBoot</groupId>
-  <artifactId>spring-boot-parent</artifactId>
-  <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>spring-boot-parent</name>
-  <description>SpringBoot集成</description>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baseBoot</groupId>
+    <artifactId>spring-boot-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>spring-boot-parent</name>
+    <description>SpringBoot集成</description>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-    <com.alibaba.dubbo.version>2.5.3</com.alibaba.dubbo.version>
-    <org.apache.zookeeper.version>3.4.6</org.apache.zookeeper.version>
-    <com.github.sgroschupf.zkclient.version>0.1</com.github.sgroschupf.zkclient.version>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <com.alibaba.dubbo.version>2.5.3</com.alibaba.dubbo.version>
+        <org.apache.zookeeper.version>3.4.6</org.apache.zookeeper.version>
+        <com.github.sgroschupf.zkclient.version>0.1</com.github.sgroschupf.zkclient.version>
+    </properties>
 
-  <modules>
-    <module>dubbo-api</module>
-    <module>dubbo-provide</module>
-  </modules>
+    <dependencies>
+
+
+    </dependencies>
+
+    <!--maven的插件-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <!-- 配置java版本 不配置的话默认父类配置的是1.6-->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- 日志 -->
+                <!--日志位置-->
+                <pom.log.dir>E:/App/JAVA/spring-boot-git/LOG</pom.log.dir>
+                <pom.log.name>springbootdruid</pom.log.name>
+                <pom.log.dir.backup>backup</pom.log.dir.backup>
+                <pom.log.filesize>5M</pom.log.filesize><!-- 日志切割的最小单位 -->
+                <pom.log.level>INFO</pom.log.level><!-- 日志输出级别 -->
+            </properties>
+        </profile>
+        <profile>
+            <id>proc</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <!-- 是否开启模板缓存 -->
+                <pom.freemarker.cache>true</pom.freemarker.cache>
+            </properties>
+        </profile>
+    </profiles>
+    <modules>
+        <module>dubbo-api</module>
+        <module>dubbo-provide</module>
+        <!--<module>dubbo-consume</module>-->
+    </modules>
 </project>
